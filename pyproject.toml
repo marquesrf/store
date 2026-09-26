@@ -1,0 +1,54 @@
+[project]
+name = "store"
+version = "0.1.0"
+description = "Sistema de pedidos de uma loja — projeto de estudo (Python moderno + DDD)"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "alembic>=1.20.0",
+    "fastapi>=0.141.1",
+    "pydantic-settings>=2.15.0",
+    "sqlalchemy>=2.1.0",
+    "uvicorn>=0.54.0",
+]
+
+[build-system]
+requires = ["uv_build>=0.12.19,<0.13.0"]
+build-backend = "uv_build"
+
+[dependency-groups]
+dev = [
+    "httpx>=0.28.1",
+    "hypothesis>=6.168.1",
+    "mypy>=2.3.1",
+    "pre-commit>=4.6.2",
+    "pytest>=9.1.1",
+    "pytest-cov>=7.1.0",
+    "ruff>=0.16.9",
+]
+
+[tool.ruff]
+target-version = "py314"
+src = ["src", "tests"]
+# Alembic generates migrations/ from its own templates; not our code to lint.
+extend-exclude = ["migrations"]
+
+[tool.ruff.lint]
+# Sensible modern default set: pyflakes, pycodestyle, isort, pyupgrade,
+# bugbear, comprehensions, simplify. Expand later if needed.
+select = ["E", "F", "I", "UP", "B", "C4", "SIM"]
+
+[tool.ruff.lint.flake8-bugbear]
+# FastAPI's Depends()/Query() in argument defaults are the framework idiom,
+# not the B008 bug they resemble.
+extend-immutable-calls = ["fastapi.Depends", "fastapi.Query"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "--strict-markers"
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+files = ["src", "tests"]
+exclude = ["migrations/"]
