@@ -1,5 +1,7 @@
 # store
 
+[![CI](https://github.com/marquesrf/store/actions/workflows/ci.yml/badge.svg)](https://github.com/marquesrf/store/actions/workflows/ci.yml)
+
 A small order-management system built end to end as a study project, to
 practice **modern Python** and **Domain-Driven Design**. The domain is
 deliberately simple — a store with a catalog, orders, and stock — so the focus
