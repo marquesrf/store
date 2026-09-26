@@ -1,4 +1,4 @@
-# store
+# PyShop
 
 [![CI](https://github.com/marquesrf/store/actions/workflows/ci.yml/badge.svg)](https://github.com/marquesrf/store/actions/workflows/ci.yml)
 

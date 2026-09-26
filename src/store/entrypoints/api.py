@@ -55,7 +55,7 @@ class OrderResponse(BaseModel):
     items: list[ItemPayload]
 
 
-app = FastAPI(title="store")
+app = FastAPI(title="PyShop")
 
 
 @app.post("/orders", status_code=201)
